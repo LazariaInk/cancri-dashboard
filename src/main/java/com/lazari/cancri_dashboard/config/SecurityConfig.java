@@ -18,9 +18,6 @@ public class SecurityConfig {
 
     private static final String SECRET_KEY = "thisissecretykeyformyaccesssecreytokenthatiwilluseinproduciton";
 
-
-    //private final SecretKey key = Keys.hmacShaKeyFor(Decoders.BASE64.decode(SECRET_KEY));
-
     private final SecretKey accessKey = Keys.hmacShaKeyFor(Decoders.BASE64.decode(SECRET_KEY));
 
     @Bean
@@ -49,7 +46,6 @@ public class SecurityConfig {
         JwtGrantedAuthoritiesConverter grantedAuthoritiesConverter = new JwtGrantedAuthoritiesConverter();
         grantedAuthoritiesConverter.setAuthorityPrefix("ROLE_");
         grantedAuthoritiesConverter.setAuthoritiesClaimName("roles");
-
         JwtAuthenticationConverter jwtAuthenticationConverter = new JwtAuthenticationConverter();
         jwtAuthenticationConverter.setJwtGrantedAuthoritiesConverter(grantedAuthoritiesConverter);
         return jwtAuthenticationConverter;
